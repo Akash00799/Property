@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-display), "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-display), "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: var(--font-sans), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+:root {
+  /* Brand Theme Colors */
+  --color-forest-950: #07140f;
+  --color-forest-900: #0a1d16;
+  --color-forest-850: #0f2920;
+  --color-forest-800: #14382c;
+  --color-forest-700: #1c4b3c;
+  --color-forest-600: #296853;
+  
+  --color-gold-300: #edd7a6;
+  --color-gold-400: #dfbe82;
+  --color-gold-500: #c8a870;
+  --color-gold-600: #af8d54;
+  --color-gold-700: #8f6f3b;
+
+  --color-ivory-50: #fcfbf8;
+  --color-ivory-100: #f7f4ed;
+  --color-ivory-200: #ede7dc;
+  --color-ivory-300: #dfd7c7;
+
+  --color-charcoal-900: #0c100f;
+  --color-charcoal-800: #151a18;
+  --color-charcoal-700: #222a27;
+  --color-charcoal-600: #35403c;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    background-color: var(--color-ivory-50);
+    color: #121815;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Razor-sharp, high-clarity headings & display typography - inherit text color from context */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+    font-weight: 700;
+  }
+
+  .font-serif, .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* High-contrast readable body paragraphs */
+  p {
+    line-height: 1.65;
+  }
+}
+
+/* Custom Utilities for Premium Aesthetics */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #dfbe82 0%, #c8a870 50%, #9e7e38 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border {
+  border-color: rgba(200, 168, 112, 0.25);
+}
+
+.gold-border-glow:hover {
+  border-color: rgba(200, 168, 112, 0.6);
+  box-shadow: 0 10px 30px -10px rgba(200, 168, 112, 0.15);
+}
+
+.bg-forest-deep {
+  background-color: var(--color-forest-900);
+}
+
+.bg-forest-card {
+  background-color: var(--color-forest-850);
+}
+
+.glass-dark {
+  background: rgba(10, 29, 22, 0.92);
+  border: 1px solid rgba(200, 168, 112, 0.2);
+}
+
+.glass-light {
+  background: rgba(252, 251, 248, 0.94);
+  border: 1px solid rgba(200, 168, 112, 0.22);
+}
+
+.luxury-card-shadow {
+  box-shadow: 0 20px 45px -15px rgba(10, 29, 22, 0.08), 0 0 1px 1px rgba(200, 168, 112, 0.12);
+}
+
+.luxury-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -10px rgba(10, 29, 22, 0.12), 0 0 2px 1px rgba(200, 168, 112, 0.25);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f7f4ed;
+}
+::-webkit-scrollbar-thumb {
+  background: #c8a870;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #af8d54;
+}
+
+/* Zero-Cost Ambient Glows (Replace expensive filter: blur-3xl) */
+.glow-gold {
+  background: radial-gradient(circle, rgba(200, 168, 112, 0.14) 0%, rgba(200, 168, 112, 0) 70%);
+  pointer-events: none;
+}
+
+.glow-emerald {
+  background: radial-gradient(circle, rgba(20, 56, 44, 0.35) 0%, rgba(20, 56, 44, 0) 70%);
+  pointer-events: none;
+}
+
+/* Modern Section Containment for Instant 60FPS Scrolling */
+.section-contained {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* Hardware-accelerated Smooth Motion & Reveal */
+.gpu-accel {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.smooth-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.smooth-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hide Next.js Development Toolbar Indicators */
+nextjs-portal,
+[data-nextjs-toast],
+[data-nextjs-dev-indicator] {
+  display: none !important;
+}
